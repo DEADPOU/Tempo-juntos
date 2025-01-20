@@ -27,12 +27,23 @@
     <div id="counter">Carregando...</div>
 
     <script>
-        const startDate = new Date("2022-08-06T00:00:00");
+        const startDate = new Date("2022-08-06T00:00:00"); // Data de início
         function updateCounter() {
             const now = new Date();
-            const differenceInSeconds = Math.floor((now - startDate) / 1000);
-            document.getElementById("counter").textContent = `${differenceInSeconds} segundos`;
+            const difference = now - startDate; // Diferença em milissegundos
+
+            // Converter para dias, horas, minutos e segundos
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Exibir o contador formatado
+            document.getElementById("counter").textContent = 
+                `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
         }
+
+        // Atualizar a cada segundo
         setInterval(updateCounter, 1000);
         updateCounter();
     </script>
