@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Juntos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #ff6f61;
+        }
+        #counter {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tempo Juntos</h1>
+    <p>Vocês estão juntos há:</p>
+    <div id="counter">Carregando...</div>
+
+    <script>
+        const startDate = new Date("2022-08-06T00:00:00");
+        function updateCounter() {
+            const now = new Date();
+            const differenceInSeconds = Math.floor((now - startDate) / 1000);
+            document.getElementById("counter").textContent = `${differenceInSeconds} segundos`;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+    </script>
+</body>
+</html>
